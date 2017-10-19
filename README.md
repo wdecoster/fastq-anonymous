@@ -1,6 +1,10 @@
 # fastq-anonymous
 Change the sequence and identifier of a fastq file to enable sharing of confidential information for troubleshooting
 
+## INSTALLATION
+`pip install fastq-anonymous`
+
+
 ## USAGE
 Reads from stdin and writes to stdout. Sequences are by default replaced by random nucleotides.  
 Fastq identifiers and description are also anonymized.  

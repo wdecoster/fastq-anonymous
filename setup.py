@@ -34,7 +34,7 @@ setup(
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'fastq-anonymous=fastq-anonymous.fastq-anonymous:main',
+            'fastq-anonymous=fastqanonymous.fastqanonymous:main',
         ],
     },
 )

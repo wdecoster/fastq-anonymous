@@ -5,7 +5,7 @@ from codecs import open
 from os import path
 
 here = path.abspath(path.dirname(__file__))
-exec(open('fastq-anonymous/version.py').read())
+exec(open('fastqanonymous/version.py').read())
 
 setup(
     name='fastq-anonymous',

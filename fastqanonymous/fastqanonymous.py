@@ -25,11 +25,15 @@ def get_args():
 
 
 def anonymize(masking):
-    if masking:
-        for rec in SeqIO.parse(sys.stdin, "fastq"):
+    i = 0
+    for rec in SeqIO.parse(sys.stdin, "fastq"):
+        rec.id, rec.description, i = make_id(i)
+        if masking:
             rec.seq = Seq.Seq(len(rec) * 'N')
-            print(rec.format("fastq"))
-    else:
-        for rec in SeqIO.parse(sys.stdin, "fastq"):
+        else:
             rec.seq = Seq.Seq(''.join([rchoice(['A', 'C', 'T', 'G']) for i in range(len(rec))]))
-            print(rec.format("fastq"))
+        print(rec.format("fastq"))
+
+
+def make_id(index):
+    return "dummy" + str(index), "", index + 1

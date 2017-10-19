@@ -1,12 +1,13 @@
-from Bio import SeqIO
+from Bio import SeqIO, Seq
 from argparse import ArgumentParser
 from .version import __version__
 import sys
+from random import choice as rchoice
 
 
 def main():
     args = get_args()
-    anonymize(args.fastq, args.mask)
+    anonymize(args.mask)
 
 
 def get_args():
@@ -23,5 +24,12 @@ def get_args():
     return parser.parse_args()
 
 
-def anonymize(fastq, masking):
-    for rec in SeqIO.parse(sys.stdin, "fastq"):
+def anonymize(masking):
+    if masking:
+        for rec in SeqIO.parse(sys.stdin, "fastq"):
+            rec.seq = Seq.Seq(len(rec) * 'N')
+            print(rec.format("fastq"))
+    else:
+        for rec in SeqIO.parse(sys.stdin, "fastq"):
+            rec.seq = Seq.Seq(''.join([rchoice(['A', 'C', 'T', 'G']) for i in range(len(rec))]))
+            print(rec.format("fastq"))

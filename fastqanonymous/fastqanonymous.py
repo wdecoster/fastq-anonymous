@@ -13,7 +13,7 @@ def main():
 def get_args():
     parser = ArgumentParser(description="Change the sequence of a fastq file \
                                         to enable sharing of confidential information, \
-                                        for troubleshooting￼ of tools.")
+                                        for troubleshooting of tools.")
     parser.add_argument("-v", "--version",
                         help="Print version and exit.",
                         action="version",
